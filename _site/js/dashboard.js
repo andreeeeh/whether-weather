@@ -2,12 +2,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const card = document.getElementById("dashboard");
 
   cities.forEach((city) => {
-    const cardElement = createCard(city);
+    const cardElement = createWeatherCard(city);
     card.appendChild(cardElement);
   });
 });
 
-const createCard = (city) => {
+const createWeatherCard = (city) => {
   const cityDaily = weatherData[city.daily];
   const today = new Date().getDay();
   const weatherIcon = getWeatherIcon(cityDaily.daily.weather_code[today]);

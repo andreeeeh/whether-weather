@@ -1,3 +1,5 @@
+dayjs.extend(window.dayjs_plugin_localizedFormat);
+
 const cities = [
   {
     name: "Amsterdam",

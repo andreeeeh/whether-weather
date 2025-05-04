@@ -2,8 +2,77 @@
 layout: layout.njk
 ---
 
-<h1 id="city-name" class="title has-text-centered"></h1>
+<section
+  class="container columns is-multiline is-flex is-justify-content-space-evenly pb-5"
+>
+  <h1 id="city-name" class="column is-12 title has-text-centered"></h1>
+  <h2 class="subtitle column is-12 has-text-centered has-text-weight-bold">
+    Right Now
+  </h2>
+  <div
+    class="column is-3 is-flex is-justify-content-center is-align-items-center"
+  >
+    <figure class="image is-96x96">
+      <img id="right-now-icon" />
+    </figure>
+  </div>
+  <section class="card column is-3">
+    <header class="card-header">
+      <p id="right-now" class="card-header-title is-size-5 is-centered"></p>
+    </header>
+    <article class="card-content is-flex is-justify-content-space-between">
+      <p
+        id="right-now-temp"
+        class="is-size-5 has-text-white has-text-weight-bold"
+      ></p>
+      <p
+        id="right-now-wind"
+        class="is-size-5 has-text-white has-text-weight-bold"
+      ></p>
+    </article>
+  </section>
+</section>
+
+<section
+  class="container columns is-multiline has-text-centered has-text-weight-bold pb-5"
+>
+  <h2 class="subtitle column is-12 has-text-weight-bold">Today's Info</h2>
+  <div class="column">
+    <div class="card p-4">
+      <p class="pb-2">Max Temp</p>
+      <p id="max-temp"></p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="card p-4">
+      <p class="pb-2">Min Temp</p>
+      <p id="min-temp"></p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="card p-4">
+      <p class="pb-2">Sunrise</p>
+      <p id="sunrise"></p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="card p-4">
+      <p class="pb-2">Sunset</p>
+      <p id="sunset"></p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="card p-4">
+      <p class="pb-2">Wind Speed</p>
+      <p id="wind-speed"></p>
+    </div>
+  </div>
+</section>
+
+<section id="week-weather" class="container columns is-multiline">
+  <h2 class="subtitle column is-12 has-text-centered has-text-weight-bold">
+    Week's Info
+  </h2>
+</section>
 
 <script src="/js/city-focus.js"></script>
-
-<section id="week-weather"></section>
