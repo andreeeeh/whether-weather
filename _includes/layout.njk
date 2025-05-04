@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,9 +9,13 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css"
     />
+    <link rel="stylesheet" type="text/css" href="/css/dashboard.css" />
+    <script src="/js/bulma.js"></script>
+    <script src="/js/dashboard.js"></script>
+    <script src="/data/weather_data.js"></script>
   </head>
   <body>
-    <div class="container">
+    <div>
       {% include "header.njk" %}
       <div id="maincontent">
         <div id="navbar">{% include "navbar.njk" %}</div>

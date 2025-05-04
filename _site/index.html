@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,10 +9,16 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css"
     />
+    <link rel="stylesheet" type="text/css" href="/css/dashboard.css" />
+    <script src="/js/bulma.js"></script>
+    <script src="/js/dashboard.js"></script>
+    <script src="/data/weather_data.js"></script>
   </head>
   <body>
-    <div class="container">
-      <div class="has-background-black has-text-centered">
+    <div>
+      <div
+  class="has-background-black is-flex is-justify-content-center is-align-items-center"
+>
   <img width="128" src="/images/logo.png" alt="Logo" />
 </div>
 
@@ -24,14 +30,13 @@
       data-target="navbarMenu"
       aria-expanded="false"
     >
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
+      <span aria-hidden="true" class="has-text-white"></span>
+      <span aria-hidden="true" class="has-text-white"></span>
+      <span aria-hidden="true" class="has-text-white"></span>
     </span>
   </div>
   <div id="navbarMenu" class="navbar-menu">
     <div class="navbar-end has-background-black">
-      <a class="navbar-item has-text-white"> Home </a>
       <a class="navbar-item has-text-white"> Dashboard </a>
       <a class="navbar-item has-text-white"> Settings </a>
     </div>
@@ -40,7 +45,15 @@
 </div>
         <div id="primary">
           
-<p>Project Scafolding</p>
+<div class="has-text-centered p-5">
+  <h1 class="title">Dashboard</h1>
+  <h2 class="subtitle">Today</h2>
+</div>
+
+<section
+  id="dashboard"
+  class="columns is-multiline box has-background-grey-darker"
+></section>
 
         </div>
       </div>
