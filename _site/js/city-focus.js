@@ -5,4 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const weekWeather = document.getElementById("week-weather");
 
   cityName.innerHTML = city.name;
+
+  const today = new Date().getDay();
+  console.log(dayjs(today).format("ddd"));
 });
