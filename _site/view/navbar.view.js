@@ -1,13 +1,10 @@
 const renderDropdownItem = (city, isActive) => {
-  const favorites = document.getElementById("favorites");
   const dropdownContent = document.getElementById("dropdown-content");
   const cityLink = document.createElement("a");
 
   cityLink.classList.add("dropdown-item");
   cityLink.innerHTML = city.name;
   cityLink.href = `/city-focus/?city=${city.url}`;
-
-  favorites.classList.remove("is-hidden");
 
   if (isActive) {
     cityLink.classList.add("is-active");
@@ -16,7 +13,15 @@ const renderDropdownItem = (city, isActive) => {
   dropdownContent.appendChild(cityLink);
 };
 
-const highlightNav = (elementId, activate = true) => {
+showFavoritesMenu = () => {
+  const list = getFavoriteCities();
+  const favorites = document.getElementById("favorites");
+  list.length
+    ? favorites.classList.remove("is-hidden")
+    : favorites.classList.add("is-hidden");
+};
+
+const highlightNav = (elementId) => {
   let element = document.getElementById(elementId);
   let style = "is-link";
 
@@ -24,9 +29,10 @@ const highlightNav = (elementId, activate = true) => {
     style = "has-background-link";
   }
 
-  if (activate) {
-    element.classList.add(style);
-  } else {
-    element.classList.remove(style);
-  }
+  element.classList.toggle(style);
+};
+
+const resetSettings = (elementId) => {
+  const element = document.getElementById(elementId);
+  element.classList.remove("is-link");
 };

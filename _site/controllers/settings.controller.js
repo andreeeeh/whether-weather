@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const celsius = document.getElementById("celsius");
-  const fahrenheit = document.getElementById("fahrenheit");
   const resetButton = document.getElementById("reset");
   const unit = getUnit();
   let favCitiesStg = getFavoriteCities();
@@ -11,36 +9,39 @@ document.addEventListener("DOMContentLoaded", () => {
     const cityButton = renderCityButton(city, isFavorite);
 
     cityButton.addEventListener("click", () => {
+      const isFavorite = favCitiesStg.includes(city.name);
       if (isFavorite) {
         favCitiesStg = favCitiesStg.filter((cityStg) => cityStg !== city.name);
         highlightNav(city.url);
       } else {
-        favCitiesStg.push(city.name, false);
+        favCitiesStg.push(city.name);
         highlightNav(city.url);
       }
 
       setFavoreiteCities(favCitiesStg);
-      location.reload();
+      showFavoritesMenu();
     });
   });
 
   //Update temperature measurement unit
-  updateUnitButtons(unit, celsius, fahrenheit);
+  updateUnitButtons(unit);
 
   celsius.addEventListener("click", () => {
     setUnit("celsius");
-    updateUnitButtons("celsius", celsius, fahrenheit);
+    updateUnitButtons("celsius");
   });
 
   fahrenheit.addEventListener("click", () => {
     setUnit("fahrenheit");
-    updateUnitButtons("fahrenheit", celsius, fahrenheit);
+    updateUnitButtons("fahrenheit");
   });
 
   // Reset to default settings
   resetButton.addEventListener("click", () => {
     setUnit("celsius");
+    updateUnitButtons("celsius");
     setFavoreiteCities([]);
-    location.reload();
+    cities.forEach((city) => resetSettings(city.url));
+    showFavoritesMenu();
   });
 });

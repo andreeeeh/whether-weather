@@ -7,17 +7,17 @@ const renderCityButton = (city, isFavorite) => {
   cityButton.id = city.url;
 
   if (isFavorite) {
-    cityButton.classList.add("is-link");
   }
 
   favCitiesContainer.appendChild(cityButton);
   return cityButton;
 };
 
-const updateUnitButtons = (unit) => {
-  const celsius = document.getElementById("celsius");
-  const fahrenheit = document.getElementById("fahrenheit");
+showFavMenu = () => {
+  cityButton.classList.toggle("is-link");
+};
 
+const updateUnitButtons = (unit, celsius, fahrenheit) => {
   if (unit === "fahrenheit") {
     fahrenheit.classList.add("is-link");
     celsius.classList.remove("is-link");

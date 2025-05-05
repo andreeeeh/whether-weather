@@ -14,7 +14,10 @@ const renderCityButton = (city, isFavorite) => {
   return cityButton;
 };
 
-const updateUnitButtons = (unit, celsius, fahrenheit) => {
+const updateUnitButtons = (unit) => {
+  const celsius = document.getElementById("celsius");
+  const fahrenheit = document.getElementById("fahrenheit");
+
   if (unit === "fahrenheit") {
     fahrenheit.classList.add("is-link");
     celsius.classList.remove("is-link");

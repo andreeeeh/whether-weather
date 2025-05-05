@@ -25,4 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
       renderDropdownItem(city, urlCityParam === city.url);
     });
   }
+
+  showFavoritesMenu();
 });
