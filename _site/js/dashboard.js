@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     JSON.parse(localStorage.getItem("favoriteCities")) || [];
 
   // Set title
-  if (favoriteCitiesStorage.length && urlParam === "true") {
+  if (favoriteCitiesStorage.length && urlParam) {
     dashboardTitle.innerHTML = `Favorite Cities`;
     citiesList = citiesList.filter((city) =>
       favoriteCitiesStorage.includes(city.name)

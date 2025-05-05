@@ -37,6 +37,7 @@
         <div class="dropdown is-hoverable">
           <div class="dropdown-trigger">
             <button
+              id="dropdown-button"
               class="button"
               aria-haspopup="true"
               aria-controls="dropdown-menu4"
@@ -67,8 +68,18 @@
     </div>
     <div id="navbarMenu" class="navbar-menu">
       <div class="navbar-end has-background-black">
-        <a href="/" class="navbar-item has-text-white is-size-5"> Dashboard </a>
-        <a href="/settings" class="navbar-item has-text-white is-size-5">
+        <a
+          id="dashboard-button"
+          href="/"
+          class="navbar-item has-text-white is-size-5"
+        >
+          Dashboard
+        </a>
+        <a
+          id="settings-button"
+          href="/settings"
+          class="navbar-item has-text-white is-size-5"
+        >
           Settings
         </a>
       </div>

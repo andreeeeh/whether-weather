@@ -17,10 +17,10 @@ document.addEventListener("DOMContentLoaded", () => {
           favoriteCitiesStorage.indexOf(city.name),
           1
         );
-        cityButton.classList.remove("is-primary");
+        cityButton.classList.remove("is-link");
       } else {
         favoriteCitiesStorage.push(city.name);
-        cityButton.classList.add("is-primary");
+        cityButton.classList.add("is-link");
       }
       localStorage.setItem(
         "favoriteCities",
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     if (favoriteCitiesStorage.includes(city.name)) {
-      cityButton.classList.add("is-primary");
+      cityButton.classList.add("is-link");
     }
 
     favCitiesContainer.appendChild(cityButton);
@@ -38,22 +38,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Set temperature unit
   if (unit === "fahrenheit") {
-    fahrenheit.classList.add("is-primary");
-    celsius.classList.remove("is-primary");
+    fahrenheit.classList.add("is-link");
+    celsius.classList.remove("is-link");
   } else {
-    celsius.classList.add("is-primary");
-    fahrenheit.classList.remove("is-primary");
+    celsius.classList.add("is-link");
+    fahrenheit.classList.remove("is-link");
   }
 
   celsius.addEventListener("click", () => {
     localStorage.setItem("unit", "celsius");
-    celsius.classList.add("is-primary");
-    fahrenheit.classList.remove("is-primary");
+    celsius.classList.add("is-link");
+    fahrenheit.classList.remove("is-link");
   });
   fahrenheit.addEventListener("click", () => {
     localStorage.setItem("unit", "fahrenheit");
-    fahrenheit.classList.add("is-primary");
-    celsius.classList.remove("is-primary");
+    fahrenheit.classList.add("is-link");
+    celsius.classList.remove("is-link");
   });
 
   // Reset to default settings
