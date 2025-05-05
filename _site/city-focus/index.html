@@ -16,12 +16,13 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap"
       rel="stylesheet"
     />
-    <script src="/js/bulma.js"></script>
+    <script src="/controllers/bulma.controller.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/localizedFormat.js"></script>
-    <script src="/js/whether-weather.js"></script>
-    <script src="/js/navbar.js"></script>
+    <script src="/models/whether-weather.models.js"></script>
+    <script src="/view/navbar.view.js"></script>
+    <script src="/controllers/navbar.controller.js"></script>
     <script src="/data/weather_data.js"></script>
   </head>
   <body>
@@ -69,14 +70,14 @@
     <div id="navbarMenu" class="navbar-menu">
       <div class="navbar-end has-background-black">
         <a
-          id="dashboard-button"
+          id="dashboard-link"
           href="/"
           class="navbar-item has-text-white is-size-5"
         >
           Dashboard
         </a>
         <a
-          id="settings-button"
+          id="settings-link"
           href="/settings"
           class="navbar-item has-text-white is-size-5"
         >
@@ -160,7 +161,8 @@
   </h2>
 </section>
 
-<script src="/js/city-focus.js"></script>
+<script src="/view/city-focus.view.js"></script>
+<script src="/controllers/city-focus.controller.js"></script>
 
     </main>
     <footer class="footer has-background-black has-text-white">

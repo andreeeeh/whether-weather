@@ -2,23 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
   dayjs.extend(window.dayjs_plugin_localizedFormat);
 });
 
-const getTemperature = (temperature, unit = "celsius") => {
-  if (unit === "fahrenheit") {
-    return Math.round((temperature * 9) / 5 + 32) + "°F";
-  }
-
-  return temperature + "°C";
-};
-
-const getTime = (date) => {
-  const time = date.split("T")[2];
-  const hour = time.split(":")[0];
-  const minute = time.split(":")[1];
-  const convertTime = new Date().setHours(hour, minute);
-
-  return dayjs(convertTime).format("LT");
-};
-
 const cities = [
   {
     name: "Amsterdam",
@@ -96,4 +79,46 @@ const getWeatherIconUrl = (code) => {
       break;
   }
   return `/images/${icon}.png`;
+};
+
+const getUnit = () => {
+  return localStorage.getItem("unit") || "celsius";
+};
+
+const setUnit = (unit) => {
+  localStorage.setItem("unit", unit);
+};
+
+const getFavoriteCities = () => {
+  return JSON.parse(localStorage.getItem("favoriteCities")) || [];
+};
+
+const setFavoreiteCities = (favCities) => {
+  localStorage.setItem("favoriteCities", JSON.stringify(favCities));
+};
+
+const filterFavoriteCities = (cities, favoriteCities) => {
+  return cities.filter((city) => favoriteCities.includes(city.name));
+};
+
+const getCity = (urlParam) => {
+  return cities.find((city) => city.url === urlParam);
+};
+
+const getTemperature = (temperature) => {
+  const unit = getUnit();
+  if (unit === "fahrenheit") {
+    return Math.round((temperature * 9) / 5 + 32) + "°F";
+  }
+
+  return temperature + "°C";
+};
+
+const getTime = (date) => {
+  const time = date.split("T")[2];
+  const hour = time.split(":")[0];
+  const minute = time.split(":")[1];
+  const convertTime = new Date().setHours(hour, minute);
+
+  return dayjs(convertTime).format("LT");
 };
