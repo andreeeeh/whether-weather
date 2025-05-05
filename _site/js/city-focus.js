@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const urlParam = new URLSearchParams(window.location.search).get("city");
   const city = cities.find((city) => city.url === urlParam);
   const todayIndex = new Date().getDay();
+  const cityDaily = weatherData[city.daily];
 
   //City name
   const cityName = document.getElementById("city-name");
@@ -15,12 +16,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const rightNowWind = document.getElementById("right-now-wind");
   const cityHourly = weatherData[city.hourly];
   const hourIndex = new Date().getHours();
+  const wetherIcon = cityHourly.hourly.weather_code[hourIndex];
+  const unit = localStorage.getItem("unit");
 
   rightNowTitle.innerHTML = `${dayjs(new Date()).format("lll")}`;
-  rightNowIcon.src = `/images/${getWeatherIcon(
-    cityHourly.hourly.weather_code[hourIndex]
-  )}.png`;
-  rightNowTemp.innerHTML = `${cityHourly.hourly.temperature_2m[hourIndex]} ${cityHourly.hourly_units.temperature_2m}`;
+  rightNowIcon.src = getWeatherIconUrl(wetherIcon);
+  rightNowIcon.alt = wetherIcon;
+  rightNowTemp.innerHTML = getTemperature(
+    cityHourly.hourly.temperature_2m[hourIndex],
+    unit
+  );
   rightNowWind.innerHTML = `${cityHourly.hourly.wind_speed_10m[hourIndex]} ${cityHourly.hourly_units.wind_speed_10m}`;
 
   //Today's weather
@@ -29,12 +34,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const sunrise = document.getElementById("sunrise");
   const sunset = document.getElementById("sunset");
   const windSpeed = document.getElementById("wind-speed");
-  const cityDaily = weatherData[city.daily];
 
   maxTemp.innerHTML = `${cityDaily.daily.temperature_2m_max[todayIndex]} ${cityDaily.daily_units.temperature_2m_max}`;
   minTemp.innerHTML = `${cityDaily.daily.temperature_2m_min[todayIndex]} ${cityDaily.daily_units.temperature_2m_min}`;
-  sunrise.innerHTML = `${cityDaily.daily.sunrise[todayIndex].split("T")[2]}`;
-  sunset.innerHTML = `${cityDaily.daily.sunset[todayIndex].split("T")[2]}`;
+  sunrise.innerHTML = getTime(cityDaily.daily.sunrise[todayIndex]);
+  sunset.innerHTML = getTime(cityDaily.daily.sunset[todayIndex]);
   windSpeed.innerHTML = `${cityDaily.daily.wind_speed_10m_max[todayIndex]} ${cityDaily.daily_units.wind_speed_10m_max}`;
 
   //Week weather
@@ -43,35 +47,35 @@ document.addEventListener("DOMContentLoaded", () => {
   for (let i = 0; i < 7; i++) {
     const dayIndex = (todayIndex + i) % 7;
     const dayName = dayjs(new Date()).add(i, "day").format("ddd");
-    const weatherCard = createWeekWeatherCard(city, dayIndex, dayName);
+    const weatherCard = createWeekWeatherCard(
+      cityDaily,
+      dayIndex,
+      dayName,
+      unit
+    );
     weekWeather.appendChild(weatherCard);
   }
 });
 
-const createWeekWeatherCard = (city, dayIndex, title) => {
-  const cityDaily = weatherData[city.daily];
-  const weatherIcon = getWeatherIcon(cityDaily.daily.weather_code[dayIndex]);
+const createWeekWeatherCard = (cityDaily, dayIndex, title, unit) => {
+  const weatherIcon = cityDaily.daily.weather_code[dayIndex];
   const weekWeatherCard = document.createElement("div");
 
   weekWeatherCard.classList.add("column");
   weekWeatherCard.innerHTML = `
-    <section class="card has-text-centered">
-      <header class="card-header">
+    <section class="card has-text-centered has-background-grey-darker">
         <p class="card-header-title is-size-5 is-centered">${title}</p>
-      </header>
       <div class="card-image is-flex is-justify-content-center">
         <figure class="image is-48x48">
-          <img src="/images/${weatherIcon}.png" alt="${weatherIcon}"/>
+          <img src=${getWeatherIconUrl(weatherIcon)} alt=${weatherIcon} />
         </figure>
       </div>
       <article class="card-content is-flex is-justify-content-space-between">
         <p class="is-size-6 has-text-white has-text-weight-bold">
-          ${cityDaily.daily.temperature_2m_min[dayIndex]}
-          ${cityDaily.daily_units.temperature_2m_min}
+          ${getTemperature(cityDaily.daily.temperature_2m_min[dayIndex], unit)}
         </p>
         <p class="is-size-6 has-text-white has-text-weight-bold">
-          ${cityDaily.daily.temperature_2m_max[dayIndex]}
-          ${cityDaily.daily_units.temperature_2m_max}
+          ${getTemperature(cityDaily.daily.temperature_2m_max[dayIndex], unit)}
         </p>
       </article>
     </section>

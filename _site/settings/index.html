@@ -21,6 +21,7 @@
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/localizedFormat.js"></script>
     <script src="/js/whether-weather.js"></script>
+    <script src="/js/navbar.js"></script>
     <script src="/data/weather_data.js"></script>
   </head>
   <body>
@@ -32,6 +33,28 @@
  <nav class="navbar has-background-black">
   <div class="container">
     <div class="navbar-brand">
+      <a id="favorites" href="/?favorites=true" class="navbar-item is-hidden">
+        <div class="dropdown is-hoverable">
+          <div class="dropdown-trigger">
+            <button
+              class="button"
+              aria-haspopup="true"
+              aria-controls="dropdown-menu4"
+            >
+              <span>Favorite Cities</span>
+              <span class="icon is-small">
+                <img
+                  src="/images/star.png"
+                  alt="Click to see your favorites cities dashboard"
+                />
+              </span>
+            </button>
+          </div>
+          <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+            <div id="dropdown-content" class="dropdown-content"></div>
+          </div>
+        </div>
+      </a>
       <span
         class="navbar-burger has-background-black"
         data-target="navbarMenu"
@@ -55,7 +78,33 @@
 
     <main class="columns is-multiline p-6">
       
-<p>test</p>
+<section class="container columns is-multiline has-background-grey-darker">
+  <section class="column is-6">
+    <div class="card container">
+      <article
+        id="fav-cities"
+        class="card-content is-flex is-flex-direction-column"
+      >
+        <h2 class="subtitle is-size-6 has-text-centered">Favorite Cities</h2>
+      </article>
+    </div>
+  </section>
+  <section class="column is-6">
+    <div class="card container">
+      <article class="card-content has-text-centered">
+        <button id="celsius" class="button is-small">Celsius</button>
+        <button id="fahrenheit" class="button is-small">Fahrenheit</button>
+      </article>
+      <article class="card-content has-text-centered">
+        <button id="reset" class="button is-small is-danger">
+          Reset default setting
+        </button>
+      </article>
+    </div>
+  </section>
+</section>
+
+<script src="/js/settings.js"></script>
 
     </main>
     <footer class="footer has-background-black has-text-white">

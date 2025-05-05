@@ -2,4 +2,30 @@
 layout: layout.njk
 ---
 
-<p>test</p>
+<section class="container columns is-multiline has-background-grey-darker">
+  <section class="column is-6">
+    <div class="card container">
+      <article
+        id="fav-cities"
+        class="card-content is-flex is-flex-direction-column"
+      >
+        <h2 class="subtitle is-size-6 has-text-centered">Favorite Cities</h2>
+      </article>
+    </div>
+  </section>
+  <section class="column is-6">
+    <div class="card container">
+      <article class="card-content has-text-centered">
+        <button id="celsius" class="button is-small">Celsius</button>
+        <button id="fahrenheit" class="button is-small">Fahrenheit</button>
+      </article>
+      <article class="card-content has-text-centered">
+        <button id="reset" class="button is-small is-danger">
+          Reset default setting
+        </button>
+      </article>
+    </div>
+  </section>
+</section>
+
+<script src="/js/settings.js"></script>

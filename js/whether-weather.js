@@ -1,4 +1,23 @@
-dayjs.extend(window.dayjs_plugin_localizedFormat);
+document.addEventListener("DOMContentLoaded", () => {
+  dayjs.extend(window.dayjs_plugin_localizedFormat);
+});
+
+const getTemperature = (temperature, unit = "celsius") => {
+  if (unit === "fahrenheit") {
+    return Math.round((temperature * 9) / 5 + 32) + "°F";
+  }
+
+  return temperature + "°C";
+};
+
+const getTime = (date) => {
+  const time = date.split("T")[2];
+  const hour = time.split(":")[0];
+  const minute = time.split(":")[1];
+  const convertTime = new Date().setHours(hour, minute);
+
+  return dayjs(convertTime).format("LT");
+};
 
 const cities = [
   {
@@ -34,7 +53,7 @@ const cities = [
   },
 ];
 
-const getWeatherIcon = (code) => {
+const getWeatherIconUrl = (code) => {
   icon = "";
   switch (code) {
     case 1:
@@ -76,5 +95,5 @@ const getWeatherIcon = (code) => {
       icon = "sunny";
       break;
   }
-  return icon;
+  return `/images/${icon}.png`;
 };
