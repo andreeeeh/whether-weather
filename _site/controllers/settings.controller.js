@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       setFavoreiteCities(favCitiesStg);
       showFavoritesMenu();
+      showCityLink(city.daily);
     });
   });
 
@@ -40,8 +41,9 @@ document.addEventListener("DOMContentLoaded", () => {
   resetButton.addEventListener("click", () => {
     setUnit("celsius");
     updateUnitButtons("celsius");
+    favCitiesStg = [];
     setFavoreiteCities([]);
-    cities.forEach((city) => resetSettings(city.url));
+    cities.forEach((city) => resetSettings(city));
     showFavoritesMenu();
   });
 });

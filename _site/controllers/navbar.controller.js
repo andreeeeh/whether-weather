@@ -18,13 +18,11 @@ document.addEventListener("DOMContentLoaded", () => {
     highlightNav("dropdown-button");
   }
 
-  if (favoriteCitiesStorage.length) {
-    const citiesList = filterFavoriteCities(cities, favoriteCitiesStorage);
-
-    citiesList.forEach((city) => {
-      renderDropdownItem(city, urlCityParam === city.url);
-    });
-  }
+  cities.forEach((city) => {
+    const isFavorite = favoriteCitiesStorage.includes(city.name);
+    const isActive = urlCityParam === city.url;
+    renderDropdownItem(city, isActive, isFavorite);
+  });
 
   showFavoritesMenu();
 });
